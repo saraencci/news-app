@@ -21,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        textView=findViewById(R.id.textView);
+       // textView=findViewById(R.id.textView);
         new Content().execute();
     }
 
@@ -55,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
         @Override
         protected void onPostExecute(Void aVoid) {
             super.onPostExecute(aVoid);
-            textView.setText(title);
+         //   textView.setText(title);
         }
     }
 }
