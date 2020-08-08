@@ -32,11 +32,14 @@ public class myBusAdapter extends RecyclerView.Adapter<myBusAdapter.myViewHolder
     ArrayList<String> newsTittle;
     ArrayList<String> newsCompany;
     ArrayList<String> newsImageUrl;
+    ArrayList<String> newsContent;
+
+
 
     Context mContext;
 
 public myBusAdapter(ArrayList<String> newsUrls,ArrayList<String> newsDescription,ArrayList<String> newsTittle,
-                    ArrayList<String> newsCompany,ArrayList<String> newsImageUrl,
+                    ArrayList<String> newsCompany,ArrayList<String> newsImageUrl,ArrayList<String> newsContent,
                     Context mContext, FragmentActivity activity){
     this.newsUrls=newsUrls;
     this.mContext= mContext;
@@ -44,6 +47,8 @@ public myBusAdapter(ArrayList<String> newsUrls,ArrayList<String> newsDescription
     this.newsCompany=newsCompany;
     this.newsTittle=newsTittle;
     this.newsImageUrl=newsImageUrl;
+    this.newsContent=newsContent;
+
 }
     @NonNull
     @Override
@@ -65,23 +70,12 @@ public myBusAdapter(ArrayList<String> newsUrls,ArrayList<String> newsDescription
                 newsData.putString("news_image_url",newsImageUrl.get(position));
                 newsData.putString("news_description",newsDescription.get(position));
                 newsData.putString("news_url",newsUrls.get(position));
-
-
-
-//                FragmentTransaction fragmentTransaction2 = ((MainActivity)mContext).getSupportFragmentManager().beginTransaction().replace(R.id.fragment,new NewsArticleFragment());
-//                fragmentTransaction2.
-//                ((MainActivity)mContext).getSupportFragmentManager().beginTransaction().replace(R.id.container,new NewsArticleFragment()).
-//            .addToBackStack(null).setArguments(newsData).commit();
-//                fragmentTransaction2.replace(R.id.fragment, new NewsArticleFragment()
+                newsData.putString("news_content",newsContent.get(position));
                 NewsArticleFragment newsArticleFragment =new NewsArticleFragment();
                 newsArticleFragment.setArguments(newsData);
                 FragmentTransaction fragmentTransaction2 = ((MainActivity)mContext).getSupportFragmentManager().beginTransaction();
                 fragmentTransaction2.replace(R.id.fragment, newsArticleFragment);
                 fragmentTransaction2.addToBackStack(null).commit();
-
-
-
-
             }
         });
 

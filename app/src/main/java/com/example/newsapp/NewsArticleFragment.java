@@ -7,6 +7,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,6 +22,8 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
 import java.io.IOException;
+
+import static android.content.ContentValues.TAG;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -66,6 +69,7 @@ public class NewsArticleFragment extends Fragment {
             newsImageUrl=bundle.getString("news_image_url");
             newsDescription=bundle.getString("news_description");
             newsUrl=bundle.getString("news_url");
+            newsContent=bundle.getString("news_content");
 
 
 //            mParam1 = getArguments().getString(ARG_PARAM1);
@@ -84,6 +88,8 @@ public class NewsArticleFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         TextView  tvTittle=getView().findViewById(R.id.textViewTittle);
+        TextView  tvNewsContent=getView().findViewById(R.id.textViewNewsContent);
+        tvNewsContent.setText(newsContent);
 
        //TextView  tvTittle=getView().findViewById(R.id.textViewTittle);
 
@@ -104,7 +110,7 @@ public class NewsArticleFragment extends Fragment {
         @Override
         protected Void doInBackground(Void... voids) {
             try {
-                //  String url = "https://firebase.google.com/";
+
                 //Connect to the website
                 Document document = Jsoup.connect(newsUrl).get();
                 //Get the logo source of the website
@@ -124,12 +130,13 @@ public class NewsArticleFragment extends Fragment {
         protected void onPostExecute(Void aVoid) {
             super.onPostExecute(aVoid);
             //   textView.setText(title);
-            TextView  tvNewsContent=getView().findViewById(R.id.textViewNewsContent);
+           // TextView  tvNewsContent=getView().findViewById(R.id.textViewNewsContent);
             TextView  textViewSmall=getView().findViewById(R.id.textView);
             ImageView ImageViewNewsImage=getView().findViewById(R.id.imageViewDetail);
-            tvNewsContent.setText(newsContent);
+           // tvNewsContent.setText(newsContent);
             Picasso.with(getContext()).load(newsImageUrl).fit().into(ImageViewNewsImage);
-            textViewSmall.setText("now done");
+            //textViewSmall.setText("this "+newsImageUrl);
+
         }
     }
 }

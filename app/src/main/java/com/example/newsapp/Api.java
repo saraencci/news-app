@@ -14,7 +14,9 @@ import retrofit2.http.POST;
 
 public interface Api {
    // @GET("sample.php")
-    @GET("https://newsapi.org/v2/everything?q=job&apiKey=e5942f1fdd2444fba92e7905a80f61ac")
+   // @GET("https://newsapi.org/v2/everything?q=kenya&apiKey=e5942f1fdd2444fba92e7905a80f61ac")
+//    @GET("news%20api/")
+   @GET("https://testbooker.000webhostapp.com/newsApp/")
     Call<NewsArticles>readNews();
 
 

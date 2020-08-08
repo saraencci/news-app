@@ -8,7 +8,7 @@ public class retrofitInstance {
    // public static final String BASE_URL = "https://jsonplaceholder.typicode.com";
    // public static final String BASE_URL = "http://mobileappdatabase.in/";
 // public static final String BASE_URL = "https://cashzone254.cf/";
- public static final String BASE_URL = "http://10.0.2.2/temp_news/";
+ public static final String BASE_URL = "http://10.0.2.2/";
  //public static final String BASE_URL = "http://testbooker.000webhostapp.com/adam_system/adam_system/adam_system/";
 
 
